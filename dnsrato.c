@@ -28,11 +28,9 @@ nslookup (const int argc, char ** argv, dnsdata_v * dnsV) {
     char txt[50];
    	struct hostent * host;
     
-
     BOOL matched = FALSE;
     size_t i = 0;
     
-
     rato = ( (argc < 3) ? fopen (DEFAULT_WORLDLIST, "r") : fopen (argv[2], "r") );
   	if (rato == NULL) {
 		fprintf (stderr, "[ERROR] - Opening the file: %s\n",
@@ -53,16 +51,13 @@ nslookup (const int argc, char ** argv, dnsdata_v * dnsV) {
             matched = TRUE;
             i++;
         }
-	}
 
-    
     if (matched == FALSE) {
          free (dnsV->dnsData);
          dnsV->dnsData = NULL;
     } 
     dnsV->size = i;
 }
-
 
 void
 nslookup_dump (dnsdata_v * dnsV) {
