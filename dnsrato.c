@@ -43,11 +43,13 @@ nslookup (const int argc, char ** argv, dnsdata_v * dnsV) {
 	while(fscanf(rato, "%s", &txt) != EOF) {
 		result = (char *) strcat (txt,argv[1]);
 		host=gethostbyname (result);
+
 		if (host == NULL) {
 			continue;
         } else {
             strncpy (dnsV->dnsData[i].host, result, HOSTLEN);
             dnsV->dnsData[i].host_addr = inet_ntoa ( *( (struct in_addr *)(host)->h_addr));
+            printf("HOST ENCONTRADO: %s ====> IP: %s \n", (dnsV->dnsData[i].host), dnsV->dnsData[i].host_addr);
             matched = TRUE;
             i++;
         }
@@ -60,6 +62,11 @@ nslookup (const int argc, char ** argv, dnsdata_v * dnsV) {
 }
 
 
+/*
+ * Once that function nslookup as been called, the host data 
+ * will be stored into a dnsdata_v (dns data values) structure.
+ * Then, this method can be called any time to show these data.
+ */
 void
 nslookup_dump (dnsdata_v * dnsV) {
     dnsdata_t * t;
