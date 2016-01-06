@@ -51,7 +51,7 @@ nslookup (const int argc, char ** argv, dnsdata_v * dnsV) {
             matched = TRUE;
             i++;
         }
-
+    }
     if (matched == FALSE) {
          free (dnsV->dnsData);
          dnsV->dnsData = NULL;
