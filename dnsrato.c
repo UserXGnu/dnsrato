@@ -33,10 +33,17 @@ nslookup (const int argc, char ** argv, dnsdata_v * dnsV) {
     
     rato = ( (argc < 3) ? fopen (DEFAULT_WORLDLIST, "r") : fopen (argv[2], "r") );
   	if (rato == NULL) {
-		fprintf (stderr, "[ERROR] - Opening the file: %s\n",
+		fprintf (stderr, "[ERROR] - Opening the file: %s trying to open on local dir ...\n",
 				 ( (argc < 3) ? DEFAULT_WORLDLIST : argv[2]) );
-        exit (1);
-	}
+
+        rato = ( (argc < 3) ? fopen ("rato.txt", "r") : fopen (argv[2], "r") );
+        if (rato == NULL) {
+            fprintf (stderr, "[ERROR] - Opening the file: %s trying to open on local dir ...\n",
+				 ( (argc < 3) ? "rato.txt" : argv[2]) );
+            exit (1);
+
+        }
+    }
 
 	dnsV->dnsData = (dnsdata_t *) calloc(file_possible_len (rato), sizeof(dnsdata_t) );
     

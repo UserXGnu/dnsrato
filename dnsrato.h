@@ -12,7 +12,7 @@
 
 #define HOSTLEN   128
 #define WORDLEN     50
-#define DEFAULT_WORLDLIST "rato.txt"
+#define DEFAULT_WORLDLIST "/usr/share/dnsrato/rato.txt"
 #define BOOL    unsigned char
 #define TRUE    1
 #define FALSE   0
